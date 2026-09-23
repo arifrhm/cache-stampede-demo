@@ -1,0 +1,27 @@
+======================================================================
+COMPARISON SUMMARY: BASELINE vs SINGLEFLIGHT
+======================================================================
+
+Metric                  Baseline (No Coalescing)    Singleflight (Coalesced)
+----------------------------------------------------------------------
+Total Requests          10000                       10000                   
+Cache Misses            1014                        5816                    
+Database Queries        1014                        7                       
+Max DB Concurrency      557                         1                       
+Singleflight Shared     N/A                         5815                    
+Duration                11921.49                 ms   26753.42              ms
+Throughput (RPS)        838.8                    req/s 373.8                 req/s
+Latency p50             6294.12                  ms   10763.94              ms
+Latency p95             9325.07                  ms   18671.24              ms
+Latency p99             10130.07                 ms   24140.37              ms
+Latency Max             11883.26                 ms   26690.82              ms
+Errors                  0                           0                       
+----------------------------------------------------------------------
+
+ANALYSIS:
+  * Database work reduction:    144.9x reduction in DB load
+  * Database queries:           1014 (baseline) -> 7 (singleflight)
+  * Peak DB connection demand:  557 concurrent -> 1 concurrent
+  * Result sharing efficiency:  58.15% of requests piggybacked on in-flight query
+
+======================================================================

@@ -1,0 +1,5 @@
+bin/
+results/*.cast
+results/*.mp4
+results/*.gif
+*.log

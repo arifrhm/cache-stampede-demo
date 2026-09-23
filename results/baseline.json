@@ -1,0 +1,21 @@
+{
+  "mode": "baseline",
+  "total_requests": 10000,
+  "concurrency": 10000,
+  "success_count": 10000,
+  "error_count": 0,
+  "duration": 11921488917,
+  "duration_ms": 11921.488916999999,
+  "rps": 838.8213980335994,
+  "p50_ms": 6294.124416,
+  "p95_ms": 9325.070209,
+  "p99_ms": 10130.074292,
+  "max_ms": 11883.264958,
+  "avg_ms": 5288.233079933595,
+  "cache_hits": 8986,
+  "cache_misses": 1014,
+  "database_queries": 1014,
+  "max_db_concurrency": 557,
+  "singleflight_calls": 0,
+  "singleflight_shared": 0
+}

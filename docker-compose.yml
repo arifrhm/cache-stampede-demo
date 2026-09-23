@@ -1,0 +1,46 @@
+name: cache-stampede-demo
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: csd-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: stampededb
+    ports:
+      - "5433:5432"
+    volumes:
+      - csd_pgdata:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d stampededb"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+    networks:
+      - csd-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: csd-redis
+    restart: unless-stopped
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    ports:
+      - "6380:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+    networks:
+      - csd-network
+
+volumes:
+  csd_pgdata:
+    name: csd_pgdata
+
+networks:
+  csd-network:
+    name: csd-network

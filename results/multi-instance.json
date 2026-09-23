@@ -1,0 +1,41 @@
+{
+  "mode": "singleflight",
+  "total_requests": 10000,
+  "concurrency": 10000,
+  "success_count": 10000,
+  "error_count": 0,
+  "duration": 32294099208,
+  "duration_ms": 32294.099208,
+  "rps": 309.6540930153199,
+  "p50_ms": 21981.704666999998,
+  "p95_ms": 25656.230417,
+  "p99_ms": 29153.175083000002,
+  "max_ms": 32160.35525,
+  "avg_ms": 19373.292793076944,
+  "cache_hits": 5556,
+  "cache_misses": 4512,
+  "database_queries": 20,
+  "max_db_concurrency": 1,
+  "singleflight_calls": 4512,
+  "singleflight_shared": 4504,
+  "instance_breakdown": [
+    {
+      "url": "http://localhost:8081",
+      "requests": 3334,
+      "database_queries": 5,
+      "cache_misses": 1160
+    },
+    {
+      "url": "http://localhost:8082",
+      "requests": 3333,
+      "database_queries": 9,
+      "cache_misses": 1716
+    },
+    {
+      "url": "http://localhost:8083",
+      "requests": 3333,
+      "database_queries": 6,
+      "cache_misses": 1636
+    }
+  ]
+}
