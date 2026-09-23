@@ -368,4 +368,12 @@ Don't wait for your cache to expire during a flash sale. Protect your database w
 
 ---
 
+## Repository & Source Code
+
+The complete source code, automated scripts, assets, and reproduction steps are publicly available on GitHub:
+
+🔗 **[github.com/arifrhm/cache-stampede-demo](https://github.com/arifrhm/cache-stampede-demo)**
+
+---
+
 *Written by backend engineers who believe in empirical benchmarks over architectural theories.*
