@@ -1,6 +1,4 @@
 bin/
-results/*.cast
-results/*.mp4
-results/*.gif
 *.log
 .DS_Store
+results/*.gif
