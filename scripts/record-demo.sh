@@ -31,15 +31,15 @@ if ! command -v asciinema >/dev/null 2>&1; then
 fi
 
 echo "Starting asciinema recording to ${CAST_FILE}..."
-asciinema rec "${CAST_FILE}" --overwrite --headless --idle-time-limit 1.5 -c "./scripts/demo.sh"
+asciinema rec "${CAST_FILE}" --overwrite --headless --idle-time-limit 3.5 -c "./scripts/demo.sh"
 
 echo ""
 echo "Recording finished: ${CAST_FILE}"
 
 # Check if MP4 conversion tools are available
 if command -v agg >/dev/null 2>&1 && command -v ffmpeg >/dev/null 2>&1; then
-    echo "Generating GIF via agg..."
-    agg "${CAST_FILE}" "${GIF_FILE}" --theme monokai --font-size 18 --speed 1.5
+    echo "Generating GIF via agg (natural speed 1.0x, readable font)..."
+    agg "${CAST_FILE}" "${GIF_FILE}" --theme monokai --font-size 17 --line-height 1.35 --speed 1.0 --last-frame-duration 8
     echo "Converting GIF to MP4 via ffmpeg..."
     ffmpeg -y -i "${GIF_FILE}" -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" "${MP4_FILE}"
     rm -f "${GIF_FILE}"

@@ -4,38 +4,38 @@
   "concurrency": 10000,
   "success_count": 10000,
   "error_count": 0,
-  "duration": 32294099208,
-  "duration_ms": 32294.099208,
-  "rps": 309.6540930153199,
-  "p50_ms": 21981.704666999998,
-  "p95_ms": 25656.230417,
-  "p99_ms": 29153.175083000002,
-  "max_ms": 32160.35525,
-  "avg_ms": 19373.292793076944,
-  "cache_hits": 5556,
-  "cache_misses": 4512,
-  "database_queries": 20,
+  "duration": 7786073834,
+  "duration_ms": 7786.073834,
+  "rps": 1284.3443580424696,
+  "p50_ms": 4428.7469169999995,
+  "p95_ms": 4510.999208,
+  "p99_ms": 4642.9481670000005,
+  "max_ms": 7766.3868330000005,
+  "avg_ms": 3201.140954189401,
+  "cache_hits": 4445,
+  "cache_misses": 5555,
+  "database_queries": 7,
   "max_db_concurrency": 1,
-  "singleflight_calls": 4512,
-  "singleflight_shared": 4504,
+  "singleflight_calls": 5555,
+  "singleflight_shared": 5554,
   "instance_breakdown": [
     {
       "url": "http://localhost:8081",
       "requests": 3334,
-      "database_queries": 5,
-      "cache_misses": 1160
+      "database_queries": 3,
+      "cache_misses": 2235
     },
     {
       "url": "http://localhost:8082",
       "requests": 3333,
-      "database_queries": 9,
-      "cache_misses": 1716
+      "database_queries": 2,
+      "cache_misses": 1174
     },
     {
       "url": "http://localhost:8083",
       "requests": 3333,
-      "database_queries": 6,
-      "cache_misses": 1636
+      "database_queries": 2,
+      "cache_misses": 2146
     }
   ]
 }

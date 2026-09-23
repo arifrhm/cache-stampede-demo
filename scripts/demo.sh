@@ -8,7 +8,7 @@ PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "${PROJECT_DIR}"
 
 DEMO_MODE="${DEMO_MODE:-true}"
-DEMO_DELAY="${DEMO_DELAY:-1}"
+DEMO_DELAY="${DEMO_DELAY:-2}"
 REQUESTS="${REQUESTS:-10000}"
 CONCURRENCY="${CONCURRENCY:-10000}"
 DB_LATENCY_MS="${DB_LATENCY_MS:-100}"
@@ -112,7 +112,7 @@ docker exec csd-redis redis-cli SET "user:123" '{"id":123,"name":"Alice Wonderla
 curl -s -X POST "http://localhost:8880/stats/reset" > /dev/null
 
 echo "Sending ${REQUESTS} requests to WARM cache..."
-./bin/loadtest -url=http://localhost:8880 -requests=${REQUESTS} -concurrency=${CONCURRENCY} -mode=baseline -silent=true
+./bin/loadtest -url=http://localhost:8880 -requests=${REQUESTS} -concurrency=${CONCURRENCY} -mode=baseline
 echo ""
 demo_pause
 
@@ -234,7 +234,7 @@ sleep 0.2
 echo -e "${YELLOW}CACHE STATUS: EXPIRED!${RESET}"
 echo "Step 4: Immediately bursting ${REQUESTS} requests on expired key with singleflight..."
 curl -s -X POST "http://localhost:8880/stats/reset" > /dev/null
-./bin/loadtest -url=http://localhost:8880 -requests=${REQUESTS} -concurrency=${CONCURRENCY} -mode=singleflight -silent=true
+./bin/loadtest -url=http://localhost:8880 -requests=${REQUESTS} -concurrency=${CONCURRENCY} -mode=singleflight
 EXP_SNAP=$(curl -s http://localhost:8880/stats)
 echo -e "${GREEN}Result after natural TTL expiration burst:${RESET}"
 echo "${EXP_SNAP}" | grep -o '"database_queries":[0-9]*'

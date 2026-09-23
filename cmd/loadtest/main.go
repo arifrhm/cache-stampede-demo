@@ -208,9 +208,34 @@ func main() {
 	// Open the gate!
 	close(startGate)
 
+	// Live progress ticker to visually show real concurrent execution
+	ticker := time.NewTicker(300 * time.Millisecond)
+	tickerDone := make(chan struct{})
+	if !*silent {
+		go func() {
+			for {
+				select {
+				case <-ticker.C:
+					doneCount := successCount.Load() + errorCount.Load()
+					elapsed := time.Since(benchmarkStart).Seconds()
+					pct := float64(doneCount) / float64(*requests) * 100.0
+					fmt.Printf("\r  ⏳ Live burst progress: %5d / %d (%5.1f%%) — Elapsed: %.2fs",
+						doneCount, *requests, pct, elapsed)
+				case <-tickerDone:
+					return
+				}
+			}
+		}()
+	}
+
 	// Wait for all requests to finish
 	doneWg.Wait()
 	benchmarkDuration := time.Since(benchmarkStart)
+	ticker.Stop()
+	if !*silent {
+		close(tickerDone)
+		fmt.Printf("\r  ✓ All %d concurrent requests completed! Total elapsed: %.2fs\n", *requests, benchmarkDuration.Seconds())
+	}
 
 	// 2. Fetch final stats from all targets
 	var totalDBQueries int64
