@@ -122,26 +122,23 @@ This will automatically:
 While the server is running, you can visit the real-time browser dashboard:
 
 ```
-http://localhost:8080/dashboard
+http://localhost:8880/dashboard
 ```
 
 ---
 
-## 🎥 Recording the Demo
+## 🎥 Demonstration Video & Terminal Recording
 
-### Option A: Via asciinema (Automated)
+The repository includes the authentic recorded terminal session and MP4 video:
 
-Run:
+- 🎬 **Terminal Recording Video (MP4)**: [`results/cache-stampede-demo.mp4`](results/cache-stampede-demo.mp4) (Rendered from real terminal session using `asciinema` + `agg` + `ffmpeg`)
+- 📜 **Asciicast File**: [`results/cache-stampede-demo.cast`](results/cache-stampede-demo.cast) (Playable with `asciinema play results/cache-stampede-demo.cast`)
+
+### Re-recording on your machine:
 ```bash
 make record
 ```
-
-- If `asciinema` is installed, it records the terminal session directly to `results/cache-stampede-demo.cast`.
-- If `agg` and `ffmpeg` are installed, it automatically renders `results/cache-stampede-demo.mp4`.
-- If `asciinema` is missing, it prints installation instructions:
-  ```bash
-  brew install asciinema agg ffmpeg
-  ```
+This automatically captures the live terminal output into `.cast` and exports `.mp4`.
 
 ### Option B: Via OBS Studio
 - **Resolution**: 1920x1080 (16:9)
